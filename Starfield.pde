@@ -2,7 +2,7 @@ NormalParticle [] fdis;
 void setup()
 {
   size(500, 500);
-  fdis=new NormalParticle[50];
+  fdis=new NormalParticle[1500];
   for (int i=0; i<fdis.length; i++)
     fdis[i] = new NormalParticle(250, 250);
 }
@@ -42,7 +42,21 @@ public void move();
 }
 class OddballParticle implements Particle//uses an interface
 {
-  //your code here
+   double myX, myY;
+
+  OddballParticle(int x, int y) {
+    myX=x;
+    myY=y;
+  }
+ public void move() {
+    myX=myX+Math.random()*20;
+    myY=myY+Math.random()*20;
+  }
+ public void show()
+  {
+    fill(255,255,255);
+    rect((float)myX, (float)myY, 10, 10);
+  }
 }
 class JumboParticle //uses inheritance
 {
