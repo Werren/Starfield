@@ -1,18 +1,20 @@
-NormalParticle [] fdis;
-void setup()
+Particle [] particles;
+public void setup()
 {
   size(500, 500);
-  fdis=new NormalParticle[1500];
-  for (int i=0; i<fdis.length; i++)
-    fdis[i] = new NormalParticle(250, 250);
+  particles=new Particle[1500];
+  for (int i=0; i<particles.length; i++)
+    particles[i] = new NormalParticle(250, 250);
+      particles[0]=new OddballParticle(250,250);
 }
 void draw()
 {
   background(0);
-  for (int i=0; i<fdis.length; i++) {
-    fdis[i].move();
-    fdis[i].show();
+  for (int i=0; i<particles.length; i++) {
+    particles[i].move();
+    particles[i].show();
   }
+  
 }
 class NormalParticle implements Particle
 {
@@ -43,19 +45,21 @@ public void move();
 class OddballParticle implements Particle//uses an interface
 {
    double myX, myY;
-
+  int myColor;
   OddballParticle(int x, int y) {
     myX=x;
     myY=y;
+     myColor=color((int)((Math.random()*255)+1), (int)((Math.random()*255)+1), (int)((Math.random()*255)+1));
   }
  public void move() {
-    myX=myX+Math.random()*20;
-    myY=myY+Math.random()*20;
+    myX=myX+(Math.random()*6)-3;
+    myY=myY+(Math.random()*6)-3;
   }
  public void show()
   {
-    fill(255,255,255);
-    rect((float)myX, (float)myY, 10, 10);
+    fill(myColor);
+    rect((float)myX, (float)myY, 30, 30);
+    rect((float)myX+100, (float)myY+100, 30, 30);
   }
 }
 class JumboParticle //uses inheritance
