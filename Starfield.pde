@@ -69,6 +69,6 @@ class JumboParticle extends NormalParticle//uses inheritance
   public void show()
   {
     fill(myColor);
-    ellipse((float)myX, (float)myY, 1000, 1000);
+    ellipse((float)myX, (float)myY, 500, 500);
   }
 } 
